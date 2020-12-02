@@ -28,7 +28,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -83,7 +82,6 @@ import javax.inject.Inject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -351,7 +349,7 @@ public class SyncedFoldersActivity extends FileActivity implements SyncedFolderA
                 SyncedFolder syncedFolder = syncedFoldersMap.get(mediaFolder.absolutePath + "-" + mediaFolder.type);
                 syncedFoldersMap.remove(mediaFolder.absolutePath + "-" + mediaFolder.type);
 
-                if (syncedFolder != null && SyncedFolderUtils.isQualifyingMediaFolder(syncedFolder)) {
+                if (SyncedFolderUtils.isQualifyingMediaFolder(syncedFolder)) {
                     if (MediaFolderType.CUSTOM == syncedFolder.getType()) {
                         result.add(createSyncedFolderWithoutMediaFolder(syncedFolder));
                     } else {
